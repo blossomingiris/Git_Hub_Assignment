@@ -1,8 +1,8 @@
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import UserProfilePage from '../pages/UserProfilePage/UserProfilePage'
-import RepositoriesPage from '../pages/RepositoriesPage/RepositoriesPage'
-import FollowersPage from '../pages/FollowersPage/FollowersPage'
+import UserProfilePage from '../pages/UserProfilePage'
+import RepositoriesPage from '../pages/RepositoriesPage'
+import FollowersPage from '../pages/FollowersPage'
 import RootLayout from '../pages/RootLayout'
 import { useUsername } from '../hooks/useUsernameContext'
 import {
@@ -10,7 +10,7 @@ import {
   getUserRepositories,
   getUserFollowers,
 } from '../api/apiRequest'
-import FetchDataError from '../components/FetchDataError'
+import ErrorPage from '../pages/ErrorPage'
 
 function App() {
   const { username } = useUsername()
@@ -18,7 +18,7 @@ function App() {
     {
       path: '/',
       element: <RootLayout />,
-      errorElement: <FetchDataError />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: `${username}`,
@@ -32,7 +32,7 @@ function App() {
           },
         },
         {
-          path: `repositories/${username}`,
+          path: `${username}/repositories`,
           element: <RepositoriesPage />,
           loader: async () => {
             if (username) {
@@ -43,7 +43,7 @@ function App() {
           },
         },
         {
-          path: `followers/${username}`,
+          path: `${username}/followers`,
           element: <FollowersPage />,
           loader: async () => {
             if (username) {

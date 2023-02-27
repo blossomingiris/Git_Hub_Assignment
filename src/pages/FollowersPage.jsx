@@ -2,19 +2,37 @@ import { useLoaderData } from 'react-router-dom'
 import axios from 'axios'
 import { useUsername } from '../hooks/useUsernameContext'
 import { useEffect, useState } from 'react'
+import Pagination from '../components/Pagination'
 
 function FollowersPage() {
   const { username } = useUsername()
   const userFollowersData = useLoaderData()
   const [followers, setFollowers] = useState([])
 
+  //pagination
+  const [followersPerPage, setFollowersPerPage] = useState(7)
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const indexOfLastFollower = currentPage * followersPerPage
+  const indexOfFirstFollower = indexOfLastFollower - followersPerPage
+  const currentFollowers = followers.slice(
+    indexOfFirstFollower,
+    indexOfLastFollower
+  )
+
+  //fetch data a second time because the API endpoint at https://api.github.com/users/{username}/followers only provides user logins and not their names
   useEffect(() => {
     const fetchFollowers = async () => {
       try {
         const followerData = await Promise.all(
           userFollowersData.map(async (follower) => {
             const response = await axios.get(
-              `https://api.github.com/users/${follower.login}`
+              `https://api.github.com/users/${follower.login}`,
+              {
+                headers: {
+                  Authorization: `Token ${process.env.REACT_APP_ACCESS_KEY}`,
+                },
+              }
             )
             const data = response.data
             return data
@@ -29,9 +47,9 @@ function FollowersPage() {
   }, [userFollowersData])
 
   return (
-    <main className='flex-grow bg-greyLight-1 flex items-start justify-center'>
+    <main className='flex-grow bg-greyLight-1 flex items-start justify-center dark:bg-greyDark-3'>
       {userFollowersData.length ? (
-        <div className='w-[90%] max-w-md p-4 shadow-outer-shadow rounded-lg mt-10 sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
+        <div className='w-[90%] max-w-md p-4 shadow-outer-shadow rounded-lg mt-10 sm:p-8 dark:bg-greyDark-3 dark:shadow-outer-shadow-dark'>
           <div className='flex items-center justify-between mb-4'>
             <h5 className='text-xl font-bold leading-none text-greyDark-2 dark:text-white'>
               <span className='text-accent-color'>{username} </span> has{' '}
@@ -39,13 +57,13 @@ function FollowersPage() {
             </h5>
           </div>
           <div className='flow-root'>
-            <ul className='divide-y divide-greyLight-2 dark:divide-gray-700'>
-              {followers.map((follower) => (
+            <ul className='divide-y divide-greyLight-2 dark:divide-accent-color'>
+              {currentFollowers.map((follower) => (
                 <li className='py-3 sm:py-4' key={follower.id}>
                   <div className='flex items-center space-x-4'>
                     <div className='flex-shrink-0'>
                       <img
-                        className='w-10 h-10 rounded-lg shadow-outer-shadow'
+                        className='w-10 h-10 rounded-lg shadow-outer-shadow dark:shadow-outer-shadow-dark'
                         src={follower.avatar_url}
                         alt={`${follower.login} avatar`}
                       />
@@ -63,6 +81,12 @@ function FollowersPage() {
               ))}
             </ul>
           </div>
+          <Pagination
+            currentPage={currentPage}
+            currentFollowers={currentFollowers}
+            setCurrentPage={setCurrentPage}
+            followersPerPage={followersPerPage}
+          />
         </div>
       ) : (
         <div className='self-center'>

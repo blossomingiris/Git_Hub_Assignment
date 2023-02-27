@@ -3,11 +3,23 @@ import { useState } from 'react'
 import { useUsername } from '../hooks/useUsernameContext'
 import { BsStarFill, BsFolderFill } from 'react-icons/bs'
 import { HiSortAscending, HiSortDescending } from 'react-icons/hi'
+import Pagination from '../components/Pagination'
 
 function RepositoriesPage() {
   const userRepositoriesData = useLoaderData()
   const { username } = useUsername()
   const [sortOrder, setSortOrder] = useState('desc')
+
+  //pagination
+  const [repositoriesPerPage, setRepositoriesPerPage] = useState(7)
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const indexOfLastRepository = currentPage * repositoriesPerPage
+  const indexOfFirstRepository = indexOfLastRepository - repositoriesPerPage
+  const currentRepositories = userRepositoriesData.slice(
+    indexOfFirstRepository,
+    indexOfLastRepository
+  )
 
   const sortRepositoriesByStars = () => {
     const sortedRepositories = userRepositoriesData.sort((a, b) => {
@@ -20,9 +32,9 @@ function RepositoriesPage() {
   }
 
   return (
-    <main className='flex-grow bg-greyLight-1 flex items-start justify-center'>
+    <main className='flex-grow bg-greyLight-1 flex items-start justify-center dark:bg-greyDark-3'>
       {userRepositoriesData.length ? (
-        <div className='w-full max-w-md p-4 shadow-outer-shadow rounded-lg m-3 mt-10 sm:p-8 dark:bg-gray-800 dark:border-gray-700'>
+        <div className='w-full max-w-md p-4 shadow-outer-shadow rounded-lg m-3 sm:p-8 dark:bg-greyDark-3 dark:shadow-outer-shadow-dark'>
           <div className='flex items-center justify-between mb-4'>
             <h5 className='text-xl font-bold leading-none text-greyDark-2 dark:text-white'>
               <span className='text-accent-color'>{username} </span>
@@ -30,7 +42,7 @@ function RepositoriesPage() {
             </h5>
             <button
               onClick={sortRepositoriesByStars}
-              className='p-3 text-sm font-medium rounded-lg shadow-outer-shadow outline-none focus:outline-none focus:shadow-inner-shadow transition-scale ease-in-out duration-100'
+              className='p-3 text-sm font-medium rounded-lg shadow-outer-shadow outline-none focus:outline-none focus:shadow-inner-shadow transition-scale ease-in-out duration-100 dark:shadow-outer-shadow-dark dark:focus:shadow-inner-shadow-dark'
             >
               {sortOrder === 'desc' ? (
                 <HiSortDescending className='text-gradient-pink w-5 h-5' />
@@ -40,8 +52,8 @@ function RepositoriesPage() {
             </button>
           </div>
           <div className='flow-root'>
-            <ul className='divide-y divide-greyLight-2 dark:divide-gray-700'>
-              {userRepositoriesData.map((repo) => (
+            <ul className='divide-y divide-greyLight-2 dark:divide-accent-color'>
+              {currentRepositories.map((repo) => (
                 <li className='py-3 sm:py-4' key={repo.id}>
                   <div className='flex items-center space-x-4'>
                     <div className='flex-1 min-w-0'>
@@ -51,7 +63,7 @@ function RepositoriesPage() {
                           {repo.name}
                         </p>
                       </div>
-                      <p className='text-sm text-greyDark-2 truncate dark:text-gray-400'>
+                      <p className='text-sm text-greyDark-2 truncate dark:text-gray-300'>
                         {repo.description}
                       </p>
                     </div>
@@ -64,6 +76,12 @@ function RepositoriesPage() {
               ))}
             </ul>
           </div>
+          <Pagination
+            currentPage={currentPage}
+            currentRepositories={currentRepositories}
+            setCurrentPage={setCurrentPage}
+            repositoriesPerPage={repositoriesPerPage}
+          />
         </div>
       ) : (
         <div className='self-center'>

@@ -7,28 +7,27 @@ function UserProfilePage() {
   const { login, name, avatar_url, location, bio } = useLoaderData()
 
   return (
-    <main className='flex-grow bg-greyLight-1 flex items-start justify-center'>
-      <section className='w-[90%] max-w-sm shadow-outer-shadow rounded-lg mt-5'>
+    <main className='flex-grow bg-greyLight-1 flex justify-center items-center dark:bg-greyDark-3'>
+      <section className='w-[90%] max-w-sm shadow-outer-shadow rounded-lg dark:shadow-outer-shadow-dark'>
         <div className='flex flex-col items-center p-3.5 sm:p-5 md:p-12 gap-y-3'>
           <img
-            className='w-[200px] h-[200px] mb-3 rounded-lg shadow-outer-shadow'
+            className='w-[120px] h-[120px] md:w-[200px] md:h-[200px] mb-3 rounded-lg shadow-outer-shadow dark:shadow-outer-shadow-dark'
             src={avatar_url}
             alt={`${login} avatar`}
           />
-          <div></div>
-          <h5 className='mb-1 text-xl font-medium text-gray-900 dark:text-white'>
+          <h5 className='mb-1 text-xl font-medium text-gray-900 dark:text-accent-color'>
             {login}
           </h5>
-          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-400'>
+          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-200'>
             <BsPersonFill className='text-accent-color w-5 h-5' />{' '}
             {name || 'No name found'}
           </span>
-          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-400'>
+          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-200'>
             <HiLocationMarker className='text-accent-color w-5 h-5' />{' '}
             {location || 'No location found'}
           </span>
-          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-400'>
-            <FaAngellist className='text-accent-color w-5 h-5' />{' '}
+          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-200'>
+            <FaAngellist className='text-accent-color w-[25px] h-[25px]' />{' '}
             {bio || 'No bio found'}
           </span>
         </div>

@@ -1,4 +1,3 @@
-import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import UserProfilePage from '../pages/UserProfilePage'
 import RepositoriesPage from '../pages/RepositoriesPage'
@@ -14,6 +13,7 @@ import ErrorPage from '../pages/ErrorPage'
 
 function App() {
   const { username } = useUsername()
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -56,6 +56,7 @@ function App() {
       ],
     },
   ])
+
   return <RouterProvider router={router} />
 }
 

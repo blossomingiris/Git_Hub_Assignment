@@ -8,6 +8,7 @@ function ErrorPage() {
 
   const onClickHandler = () => {
     setUsername('')
+    sessionStorage.removeItem('username')
   }
 
   return (

@@ -1,8 +1,9 @@
 import { Outlet, useNavigation } from 'react-router-dom'
-import Navigation from '../components/Navbar/Navigation'
-import Search from '../components/Search/Search'
-import Spinner from '../components/Spinner/Spinner'
+import Navigation from '../components/Navigation'
+import Spinner from '../components/Spinner'
+import SwitchMode from '../components/SwitchMode'
 import { useUsername } from '../hooks/useUsernameContext'
+import SearchPage from './SearchPage'
 
 function RootLayout() {
   const { username } = useUsername()
@@ -17,7 +18,7 @@ function RootLayout() {
           <Outlet />
         </div>
       ) : (
-        <Search />
+        <SearchPage />
       )}
     </>
   )

@@ -6,7 +6,7 @@ export const getUserProfile = async (username) => {
   try {
     const { data } = await axios.get(`${BASE_URL}/${username}`, {
       headers: {
-        Authorization: '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',
+        Authorization: `Token ${process.env.REACT_APP_ACCESS_KEY}`,
       },
     })
     return data
@@ -25,7 +25,7 @@ export const getUserRepositories = async (username) => {
   try {
     const { data } = await axios.get(`${BASE_URL}/${username}/repos`, {
       headers: {
-        Authorization: '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',
+        Authorization: `Token ${process.env.REACT_APP_ACCESS_KEY}`,
       },
     })
     return data
@@ -44,7 +44,7 @@ export const getUserFollowers = async (username) => {
   try {
     const { data } = await axios.get(`${BASE_URL}/${username}/followers`, {
       headers: {
-        Authorization: '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',
+        Authorization: `Token ${process.env.REACT_APP_ACCESS_KEY}`,
       },
     })
     return data

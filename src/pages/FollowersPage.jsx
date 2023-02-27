@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react'
+
 import { useLoaderData } from 'react-router-dom'
 import axios from 'axios'
+
 import { useUsername } from '../hooks/useUsernameContext'
-import { useEffect, useState } from 'react'
 import Pagination from '../components/Pagination'
 
 function FollowersPage() {
@@ -90,7 +92,7 @@ function FollowersPage() {
         </div>
       ) : (
         <div className='self-center'>
-          <h2 className='text-greyDark-1 font-bold tracking-tight text-greyDark-1 text-lg md:text-xl'>
+          <h2 className='text-greyDark-1 font-bold tracking-tight text-greyDark-1 text-lg md:text-xl dark:text-white'>
             User <span className='text-accent-color'>{username}</span> does not
             have followers
           </h2>

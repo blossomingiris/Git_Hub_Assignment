@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { HiOutlineLightBulb, HiLightBulb } from 'react-icons/hi'
 import useDarkMode from '../hooks/useDarkMode'
+import { HiOutlineLightBulb, HiLightBulb } from 'react-icons/hi'
 
 function SwitchMode() {
   const [colorTheme, setTheme] = useDarkMode()

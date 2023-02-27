@@ -1,10 +1,12 @@
+import { useState } from 'react'
+
 import { useUsername } from '../hooks/useUsernameContext'
 import SearchForm from './SearchForm'
+import SwitchMode from './SwitchMode'
+
 import { FaHamburger, FaUsers } from 'react-icons/fa'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { BsFolderFill, BsPersonFill } from 'react-icons/bs'
-import { useState } from 'react'
-import SwitchMode from './SwitchMode'
 
 function Navigation() {
   const { username } = useUsername()

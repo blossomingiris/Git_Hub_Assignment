@@ -1,6 +1,8 @@
-import { useUsername } from '../hooks/useUsernameContext'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+import { useUsername } from '../hooks/useUsernameContext'
+
 import { FaGithubAlt } from 'react-icons/fa'
 import { BsSearch } from 'react-icons/bs'
 

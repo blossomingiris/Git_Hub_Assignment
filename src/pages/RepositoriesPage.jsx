@@ -1,9 +1,11 @@
-import { useLoaderData } from 'react-router-dom'
 import { useState } from 'react'
+import { useLoaderData } from 'react-router-dom'
+
 import { useUsername } from '../hooks/useUsernameContext'
+import Pagination from '../components/Pagination'
+
 import { BsStarFill, BsFolderFill } from 'react-icons/bs'
 import { HiSortAscending, HiSortDescending } from 'react-icons/hi'
-import Pagination from '../components/Pagination'
 
 function RepositoriesPage() {
   const userRepositoriesData = useLoaderData()
@@ -85,7 +87,7 @@ function RepositoriesPage() {
         </div>
       ) : (
         <div className='self-center'>
-          <h2 className='text-greyDark-1 font-bold tracking-tight text-greyDark-1 text-sm md:text-xl'>
+          <h2 className='text-greyDark-1 font-bold tracking-tight text-greyDark-1 text-sm md:text-xl dark:text-white'>
             User <span className='text-accent-color'>{username}</span> does not
             have public repositories
           </h2>

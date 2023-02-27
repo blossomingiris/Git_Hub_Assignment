@@ -17,3 +17,6 @@
 ### Deployed on
 
 - [onRender](https://render.com/)
+
+Note: <br/>
+The default value for the number of followers and repositories that can be fetched from the GitHub API is 30 per page. 

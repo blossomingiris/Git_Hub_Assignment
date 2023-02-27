@@ -13,7 +13,7 @@
 - [Tailwindcss](https://tailwindcss.com)
 - Axios
 - [react-icons](https://react-icons.github.io/react-icons)
-- 
+
 ### Deployed on
 
 - [onRender](https://render.com/)

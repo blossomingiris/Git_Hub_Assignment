@@ -1,4 +1,4 @@
-# Github assignment solution:
+# Github assignment solution
 
 ## My process
 
@@ -9,9 +9,9 @@
 ### Built with
 
 - [React](https://reactjs.org/)
-- [react-router-dom](https://reactrouter.com/en/main)
+- [React-router-dom](https://reactrouter.com/en/main)
 - [Tailwindcss](https://tailwindcss.com)
-- axios
+- Axios
 - [react-icons](https://react-icons.github.io/react-icons) - icons library for React
 
 ### Deployed on

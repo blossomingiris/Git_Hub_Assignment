@@ -30,7 +30,7 @@ function ErrorPage() {
         >
           <Link
             to='/'
-            className='flex items-center gap-x-3 justify-center text-md font-semibold text-accent-color hover:text-greyDark-2 transition-color ease-in-out duration-200 dark:hover:text-gray-300'
+            className='flex items-center gap-x-3 justify-center text-md font-semibold text-accent-color hover:text-greyDark-2 transition-color ease-in-out duration-200 dark:hover:text-gray-200'
           >
             <span>
               <BsArrowLeft className='text-lg' />
@@ -38,7 +38,6 @@ function ErrorPage() {
             Go back to Search
           </Link>
         </div>
-        <SwitchMode />
       </div>
     </main>
   )

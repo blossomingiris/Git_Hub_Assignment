@@ -9,8 +9,6 @@ export const getUserProfile = async (username) => {
         Authorization: `Token ${process.env.REACT_APP_ACCESS_KEY}`,
       },
     })
-
-    console.log(data)
     return data
   } catch (error) {
     if (error.response.status === 403) {

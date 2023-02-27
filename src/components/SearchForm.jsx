@@ -27,7 +27,6 @@ function SearchForm() {
       handleFormSubmit(e)
     }
   }
-
   return (
     <form className='flex items-center' onSubmit={handleFormSubmit}>
       <div className='relative'>

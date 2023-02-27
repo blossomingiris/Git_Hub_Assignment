@@ -22,26 +22,29 @@ function UserProfilePage() {
           <h5 className='mb-1 text-xl font-medium text-gray-900 dark:text-accent-color'>
             {login}
           </h5>
-          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-200'>
-            <BsPersonFill className='text-accent-color w-5 h-5' />{' '}
-            {name || 'No name found'}
-          </span>
-          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-200'>
-            <HiLocationMarker className='text-accent-color w-5 h-5' />{' '}
-            {location || 'No location found'}
-          </span>
-          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-200'>
-            <FaAngellist className='text-accent-color w-[25px] h-[25px]' />{' '}
-            {bio || 'No bio found'}
-          </span>
-          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-200'>
-            <BsFolderFill className='text-accent-color w-[25px] h-[25px]' />{' '}
-            {public_repos} public repositories
-          </span>
-          <span className='flex gap-x-2 text-sm text-gray-500 dark:text-gray-200'>
-            <FaUsers className='text-accent-color w-[25px] h-[25px]' />{' '}
-            {followers} followers
-          </span>
+          <div className='flex flex-col items-stretch gap-y-2'>
+            {' '}
+            <span className='flex gap-x-2 text-sm text-gray-500 justify-center dark:text-gray-200'>
+              <BsPersonFill className='text-accent-color w-5 h-5' />{' '}
+              {name || 'No name found'}
+            </span>
+            <span className='flex gap-x-2 text-sm text-gray-500 justify-center dark:text-gray-200'>
+              <HiLocationMarker className='text-accent-color w-5 h-5' />{' '}
+              {location || 'No location found'}
+            </span>
+            <span className='w-[90%] flex gap-x-2 text-sm text-gray-500 justify-center items-center text-center dark:text-gray-200'>
+              <FaAngellist className='text-accent-color w-[15%] h-5' />{' '}
+              {bio || 'No bio found'}
+            </span>
+            <span className='flex gap-x-2 text-sm text-gray-500  justify-center dark:text-gray-200'>
+              <BsFolderFill className='text-accent-color w-5 h-5' />{' '}
+              {public_repos} public repositories
+            </span>
+            <span className='flex gap-x-2 text-sm text-gray-500  justify-center dark:text-gray-200'>
+              <FaUsers className='text-accent-color w-5 h-5' /> {followers}{' '}
+              followers
+            </span>
+          </div>
         </div>
       </section>
     </main>

@@ -12,7 +12,7 @@ function FollowersPage() {
   const [followers, setFollowers] = useState([])
 
   //pagination
-  const [followersPerPage, setFollowersPerPage] = useState(7)
+  const [followersPerPage] = useState(7)
   const [currentPage, setCurrentPage] = useState(1)
 
   const indexOfLastFollower = currentPage * followersPerPage
@@ -49,13 +49,13 @@ function FollowersPage() {
   }, [userFollowersData])
 
   return (
-    <main className='flex-grow bg-greyLight-1 flex items-start justify-center dark:bg-greyDark-3'>
+    <main className='flex-grow bg-greyLight-1 flex items-center justify-center dark:bg-greyDark-3'>
       {userFollowersData.length ? (
         <div className='w-[90%] max-w-md p-4 shadow-outer-shadow rounded-lg mt-10 sm:p-8 dark:bg-greyDark-3 dark:shadow-outer-shadow-dark'>
           <div className='flex items-center justify-between mb-4'>
             <h5 className='text-xl font-bold leading-none text-greyDark-2 dark:text-white'>
-              <span className='text-accent-color'>{username} </span> has{' '}
-              {userFollowersData.length} followers:
+              <span className='text-accent-color'>{username} </span>
+              followers:
             </h5>
           </div>
           <div className='flow-root'>
@@ -92,7 +92,7 @@ function FollowersPage() {
         </div>
       ) : (
         <div className='self-center'>
-          <h2 className='text-greyDark-1 font-bold tracking-tight text-greyDark-1 text-lg md:text-xl dark:text-white'>
+          <h2 className='text-greyDark-1 text-center font-bold tracking-tight text-greyDark-1 text-lg md:text-xl dark:text-white'>
             User <span className='text-accent-color'>{username}</span> does not
             have followers
           </h2>

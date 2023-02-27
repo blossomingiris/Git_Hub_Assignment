@@ -34,7 +34,7 @@ function RepositoriesPage() {
   }
 
   return (
-    <main className='flex-grow bg-greyLight-1 flex items-start justify-center dark:bg-greyDark-3'>
+    <main className='flex-grow bg-greyLight-1 flex items-center justify-center dark:bg-greyDark-3'>
       {userRepositoriesData.length ? (
         <div className='w-full max-w-md p-4 shadow-outer-shadow rounded-lg m-3 sm:p-8 dark:bg-greyDark-3 dark:shadow-outer-shadow-dark'>
           <div className='flex items-center justify-between mb-4'>
@@ -87,7 +87,7 @@ function RepositoriesPage() {
         </div>
       ) : (
         <div className='self-center'>
-          <h2 className='text-greyDark-1 font-bold tracking-tight text-greyDark-1 text-sm md:text-xl dark:text-white'>
+          <h2 className='text-greyDark-1 text-center font-bold tracking-tight text-greyDark-1 text-lg md:text-xl dark:text-white'>
             User <span className='text-accent-color'>{username}</span> does not
             have public repositories
           </h2>
